@@ -1,11 +1,12 @@
-# Título del trabajo
+# Sistema de control de comandas en un restaurante
 
-Descripción breve del proyecto a realizar (2-3 frases).
+El proyecto consistirá en un programa capaz de registrar la hora a la que una mesa pide un plato, el número plato que sea segun el menu y mostrar en pantalla el plato elegido, el precio y el tiempo necesario para cocinarlo.
 
 ## Integrantes del equipo
 
-Nombres, apellidos, y usuario GitHub de los integrantes del equipo.
+Santiago de Arriba, David Almarza, Iván Colman.
 
 ## Objetivos del trabajo
-
-Lista de los objetivos que se persiguen con el trabajo propuesto.
+- Tener un registro de los platos que se piden en un día en el restaurante.
+- Posibilidad de encontrar la mesa que ha pedido el plato en función de la hora y el plato pedido.
+- Mayor control en los pedidos.
