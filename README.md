@@ -4,7 +4,7 @@ El proyecto consistirá en un programa capaz de registrar la hora a la que una m
 
 ## Integrantes del equipo
 
-Santiago de Arriba, David Almarza, Iván Colman.
+Santiago de Arriba (sdearriba), David Almarza, Iván Colman.
 
 ## Objetivos del trabajo
 - Tener un registro de los platos que se piden en un día en el restaurante.
