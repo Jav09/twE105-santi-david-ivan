@@ -1,12 +1,12 @@
-# Sistema de control de comandas en un restaurante
+# Combate por turnos
 
-El proyecto consistirá en un programa capaz de registrar la hora a la que una mesa pide un plato, el número plato que sea segun el menu y mostrar en pantalla el plato elegido, el precio y el tiempo necesario para cocinarlo.
+El proyecto consistirá en un programa capaz de reproducir un combate por turnos, un amplio abanico de elecciones, un final y a lo mejor una pequeña narrativa.
 
 ## Integrantes del equipo
 
 Santiago de Arriba (sdearriba), David Almarza, Iván Colman.
 
 ## Objetivos del trabajo
-- Tener un registro de los platos que se piden en un día en el restaurante.
-- Posibilidad de encontrar la mesa que ha pedido el plato en función de la hora y el plato pedido.
-- Mayor control en los pedidos.
+- Hacer un combate por turnos que incluya todos los requisitos del proyecto.
+- Que sea jugable, quiere decir que sea equilibrado, entretenido y sin errores de programación o bugs.
+- Con una amplia posibilidad de opciones a elegir para que de este modo el jugador puede crear una estrategia para derrotarlo.
