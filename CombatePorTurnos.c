@@ -5,98 +5,113 @@
 int main(){
     
 	int hpj=100, hpb=1000, accion, mod, ataquej=5, curacionj=5, ataqueb=5, curacionb=5;
-	
 	//FUNCIONES DEL JUGADOR
     int ataque(int hpb, int ataquej), curacion(int hpj, int curacionj), aumentoataque(int ataquej), aumentocuracion(int curacionj), reduccionataque(int ataqueb), reduccioncuracion(int curacionb);
     //FUNCIONES DEL ENEMIGO
 	int ataqueenemigo(int hpj, int ataqueb), curacionenemigo(int hpb, int curacionb), aumentoataqueb(int ataqueb), aumentocuracionb(int curacionb), reduccionataqueb(int ataquej), reduccioncuracionb(int curacionj);
 
-    do{
+    srand(time(NULL));
+	
+	do{
     	do{
     		printf("TURNO DEL JUGADOR:\n");
-			printf("(1)Ataque\n(2)Curacion\n(3)Modificadores\n(4)Informacion\n");
+			printf("(1)Ataque\n(2)Curacion\n(3)Modificadores\n(4)Informacion\n(5)Salir\n");
     		scanf("%i", &accion);
     		
-    		if(accion == 4){//INFORMACIÓN
+    		if(accion == 4){//INFORMACIÃ“N
     		    printf("TU:\nSALUD: %i\nCURACION: %i\nPODER: %i\n\nENEMIGO:\nSALUD: %i\nCURACION: %i\nPODER: %i\n\n", hpj, curacionj, ataquej, hpb, curacionb, ataqueb);
     		    system("pause");
+    		    printf("\n");
     		    }
     		    
 		}while(accion == 4);
     	
-		if(accion == 3){
-    		printf("(1)Aumento de Ataque\n(2)Aumento de Curacion\n(3)Reduccion del Ataque enemigo\n(4)Reduccion de la Curacion del enemigo\n");
-    		scanf("%i", &mod);
+    	switch(accion){
+    		
+    		case 1://ATAQUE
+    			hpb = ataque(hpb, ataquej);
+			    printf("\nEl enemigo tiene %i puntos de salud.\n", hpb);
+			    break;
+			    
+			case 2://CURACIÃ“N
+				hpj = curacion(hpj, curacionj);
+			    printf("\nTienes %i puntos de salud.\n", hpj);
+			    break;
+			    
+			case 3://MODIFICADORES
+				printf("(1)Aumento de Ataque\n(2)Aumento de Curacion\n(3)Reduccion del Ataque enemigo\n(4)Reduccion de la Curacion del enemigo\n");
+    		    scanf("%i", &mod);
+    		    break;
+    		    
+    		case 5://salir
+    		    exit(EXIT_SUCCESS);
+    		    break;
 		}
-		
-		if(accion == 1){//ATAQUE
-			hpb = ataque(hpb, ataquej);
-			printf("\nEl enemigo tiene %i puntos de salud.\n", hpb);
-		}
-		
-		if(accion == 2){//CURACIÓN
-			hpj = curacion(hpj, curacionj);
-			printf("\nTienes %i puntos de salud.\n", hpj);
+    	
+		switch(mod){
 			
-		}
+			case 1://AUMENTO DE ATAQUE DEL JUGADOR
+				ataquej = aumentoataque(ataquej);
+		        printf("\nTienes %i puntos de ataque, haras mas danho con tus proximos golpes.\n", ataquej);
+		        break;
+		        
+		    case 2://AUMENTO DE CURACIÃ“N DEL JUGADOR
+		    	curacionj = aumentocuracion(curacionj);
+		        printf("\nTienes %i puntos de curacion, recuperaras mas vida la proxima vez que te cures.\n", curacionj);
+		        break;
+		        
+		    case 3://REDUCCIÃ“N DE ATAQUE DEL ENEMIGO
+		    	ataqueb = reduccionataque(ataqueb);
+		        printf("\nEl Enemigo tiene %i puntos de ataque, hara menos danho con sus proximos golpes.\n", ataqueb);
+		        break;
+		        
+		    case 4://REDUCCIÃ“N DE CURACIÃ“N DEL ENEMIGO
+		    	curacionb = reduccioncuracion(curacionb);
+		        printf("\nEl Enemigo tiene %i puntos de curacion, su curacion se ha visto reducida.\n", curacionb);
+		        break;
+		}    	
 		
-		if(mod == 1 && accion ==3){//AUMENTO DE ATAQUE
-		    ataquej = aumentoataque(ataquej);
-		    printf("\nTienes %i puntos de ataque, haras mas danho con tus proximos golpes.\n", ataquej);
-		}
-		
-		if(mod == 2 && accion ==3){//AUMENTO DE CURACIÓN
-		    curacionj = aumentocuracion(curacionj);
-		    printf("\nTienes %i puntos de curacion, recuperaras mas vida la proxima vez que te cures.\n", curacionj);
-		}
-		
-		if(mod == 3 && accion ==3){//REDUCCIÓN DE ATAQUE
-		    ataqueb = reduccionataque(ataqueb);
-		    printf("\nEl Enemigo tiene %i puntos de ataque, hara menos danho con sus proximos golpes.\n", ataqueb);
-	    }
-	    
-	    if(mod == 4 && accion ==3){//REDUCCIÓN DE CURACIÓN
-		    curacionb = reduccioncuracion(curacionb);
-		    printf("\nEl Enemigo tiene %i puntos de curacion, su curacion se ha visto reducida.\n", curacionb);
-		}
 		
 	//TURNO DEL ENEMIGO
 		printf("\n\nTURNO DEL ENEMIGO:\n");
 		accion = rand() % 3 + 1;
 		
-		if(accion == 1){//ATAQUE ENEMIGO
-			hpj = ataqueenemigo(hpj, ataqueb);
-			printf("\nTienes %i puntos de salud.\n", hpj);
+		switch(accion){
+			
+			case 1://ATAQUE
+				hpj = ataqueenemigo(hpj, ataqueb);
+			    printf("\nTienes %i puntos de salud.\n", hpj);
+			    break;
+			
+			case 2://CURACIÃ“N
+				hpb = curacionenemigo(hpb, curacionb);
+			    printf("\nEl Enemigo tiene %i puntos de salud.\n", hpb);
+			    break;
+			    
+			case 3://MODIFICADORES
+				accion = rand() % 4 + 4;
+			
+			case 4://AUMENTO ATAQUE
+				ataqueb = aumentoataqueb(ataqueb);
+			    printf("\nEl enemigo tiene %i puntos de ataque, hara mas danho con sus proximos golpes.\n", ataqueb);
+				break;
+				
+			case 5://AUMENTO CURACIÃ“N
+				curacionb = aumentocuracionb(curacionb);
+			    printf("\nEl enemigo tiene %i puntos de curacion, recuperara mas vida la proxima vez que se cure.\n", curacionb);
+				break;
+				
+			case 6://REDUCCIÃ“N ATAQUE DEL JUGADOR
+				ataquej = reduccionataqueb(ataquej);
+			    printf("\nTienes %i puntos de ataque, haras menos danho con tus proximos golpes.\n", ataquej);
+				break;
+				
+			case 7://REDUCCIÃ“N CURACIÃ“N DEL ENEMIGO
+				curacionj = reduccioncuracionb(curacionj);
+			    printf("\nTienes %i puntos de curacion, tu curacion se ha visto reducida.\n", curacionj);
+				break;
 		}
-		
-		if(accion == 2){//CURACIÓN ENEMIGO
-			hpb = curacionenemigo(hpb, curacionb);
-			printf("\nEl Enemigo tiene %i puntos de salud.\n", hpb);
-		}
-		
-		if(accion == 3)
-		    accion = rand() % 4 + 4;
-		    
-		if(accion == 4){//AUMENTO ATAQUE ENEMIGO
-			ataqueb = aumentoataqueb(ataqueb);
-			printf("\nEl enemigo tiene %i puntos de ataque, hara mas danho con sus proximos golpes.\n", ataqueb);
-		}
-		
-		if(accion == 5){//AUMENTO CURACIÓN ENEMIGO
-			curacionb = aumentocuracionb(curacionb);
-			printf("\nEl enemigo tiene %i puntos de curacion, recuperara mas vida la proxima vez que se cure.\n", curacionb);
-		}
-		
-		if(accion == 6){//REDUCCION DE ATAQUE
-			ataquej = reduccionataqueb(ataquej);
-			printf("\nTienes %i puntos de ataque, haras menos danho con tus proximos golpes.\n", ataquej);
-		}
-		
-		if(accion == 7){//REDUCCION DE CURACIÓN
-			curacionj = reduccioncuracionb(curacionj);
-			printf("\nTienes %i puntos de curacion, tu curacion se ha visto reducida.\n", curacionj);
-		}
-		
+
 		printf("\n\n");
 		
 	}while(hpj > 0 && hpb > 0);
@@ -206,7 +221,7 @@ int ataqueenemigo(int hpj, int ataqueb){
 	
 	return hpj = hpj - a;
 }
-//FUNCION DE CURACIÓN DEL ENEMIGO
+//FUNCION DE CURACIÃ“N DEL ENEMIGO
 int curacionenemigo(int hpb, int curacionb){
 	int c1, c2, c;
 	
@@ -237,7 +252,7 @@ int aumentoataqueb(int ataqueb){
 	
 	return ataqueb += aa;
 }
-//FUNCION DE AUMENTO DE CURACIÓN DEL ENEMIGO
+//FUNCION DE AUMENTO DE CURACIÃ“N DEL ENEMIGO
 int aumentocuracionb(int curacionb){
 	
 	int ac;
