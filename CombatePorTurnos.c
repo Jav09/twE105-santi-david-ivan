@@ -29,6 +29,7 @@ int main(){
 			exit(EXIT_SUCCESS);
 			break;
         }
+        system("cls");
 	}while(elige != 1);	
 return 0;	
 }
@@ -65,6 +66,11 @@ void stats(int *hj, int *aj, int *cj, int *ej, int *dj){
 
     		case 5:
     			*dj += 5;
+    			break;
+    		
+    		default:
+    			printf("Pierdes el punto, elige bien la proxima vez.\n");
+    			system("pause");
     			break;
 		}
 		system("cls");
@@ -104,6 +110,9 @@ void dificultad(int *hb, int *ab, int *cb, int *df){
 			*cb = 40;
 			*df = 3;
 			break;
+			
+		default:
+			printf("Jugaras en la dificultad normal, si deseas cambiar esta opcion elige correctamente.\n");
 	}
 	system("pause");
 	system("cls");
@@ -133,8 +142,12 @@ int juego(int hpj, int ataquej, int curacionj, int defensaj, int evasionj, int h
 			printf("Estas jugando en la dificultad dificil 'Soy un Guerrero'.\n");
 	}
 	
+	system("pause");
+	system("cls");
+	
 	do{
     	do{
+    		printf("SALUD JUGADOR: %i                 SALUD ENEMIGO: %i\n\n", hpj, hpb);
     		printf("TURNO DEL JUGADOR:\n");
 			printf("(1)Ataque\n(2)Curacion\n(3)Modificadores\n(4)Estadisticas\n(5)Rendirse\n");
     		scanf("%i", &accion);
@@ -152,12 +165,12 @@ int juego(int hpj, int ataquej, int curacionj, int defensaj, int evasionj, int h
 
     		case 1://ATAQUE
     			hpb = ataque(hpb, ataquej);
-			    printf("\nEl enemigo tiene %i puntos de salud.\n", hpb);
+			    printf("El enemigo tiene %i puntos de salud.\n", hpb);
 			    break;
 
 			case 2://CURACIÓN
 				hpj = curacion(hpj, curacionj);
-			    printf("\nTienes %i puntos de salud.\n", hpj);
+			    printf("Tienes %i puntos de salud.\n", hpj);
 			    break;
 
 			case 3://MODIFICADORES
@@ -169,6 +182,10 @@ int juego(int hpj, int ataquej, int curacionj, int defensaj, int evasionj, int h
     		    printf("No me hagas mas danho porfavor!\n");
     		    hpj = 0;
     		    break;
+    		
+			default:
+				printf("Pierdes el turno, elige bien la proxima vez.\n");
+				break;
 		}
 
 		switch(mod){
@@ -214,7 +231,7 @@ int juego(int hpj, int ataquej, int curacionj, int defensaj, int evasionj, int h
 
 	//TURNO DEL ENEMIGO
 		printf("\n\nTURNO DEL ENEMIGO:\n");
-		accion = 1;//rand() % 3 + 1;
+		accion = rand() % 3 + 1;
 		system("pause");
 
 		switch(accion){
@@ -261,8 +278,9 @@ int juego(int hpj, int ataquej, int curacionj, int defensaj, int evasionj, int h
 			    printf("\nTienes %i puntos de curacion, tu curacion se ha visto reducida.\n", curacionj);
 				break;
 		}
-
-		printf("\n\n");
+		
+		system("pause");
+		system("cls");
 
 	}while(hpj > 0 && hpb > 0);
 
@@ -282,7 +300,6 @@ int ataque(int hpb, int ataquej){
 	a = a1 + a2;
 
 	printf("\nTienes %i de poder, tu ataque hace %i de danho al enemigo.\n\n", ataquej, a);
-	system ("pause");
 
 	return hpb = hpb - a;
 }
@@ -296,7 +313,6 @@ int curacion(int hpj, int curacionj){
 	c = c1 + c2;
 
 	printf("\nTienes %i de curacion, tu salud aumenta en %i puntos.\n\n", curacionj, c);
-	system ("pause");
 
 	return hpj = hpj + c;
 }
@@ -308,7 +324,6 @@ int aumentoataque(int ataquej){
 	aa = rand() % 4 + 2;
 
 	printf("\nHas obtenido %i de poder.\n\n", aa);
-	system ("pause");
 
 	return ataquej += aa;
 }
@@ -320,7 +335,6 @@ int aumentocuracion(int curacionj){
 	ac = rand() % 4 + 2;
 
 	printf("\nHas obtenido %i de curacion.\n\n", ac);
-	system ("pause");
 
 	return curacionj += ac;
 }
@@ -332,7 +346,6 @@ int aumentoevasion(int evasionj){
 	ae = rand() % 4 + 2;
 
 	printf("\nHas obtenido %i de evasion.\n\n", ae);
-	system ("pause");
 
 	return evasionj += ae;
 }
@@ -344,7 +357,6 @@ int aumentodefensa(int defensaj){
 	ad = rand() % 4 + 2;
 
 	printf("\nHas obtenido %i de defensa.\n\n", ad);
-	system ("pause");
 
 	return defensaj += ad;
 }
@@ -355,42 +367,35 @@ int aumentodefensa(int defensaj){
 
 //FUNCION DE ATAQUE DEL ENEMIGO
 int ataqueenemigo(int hpj, int ataqueb, int evasionj, int defensaj){
-	int a1, a2, a=0, x, n, i=0;
-	
+	int a, n;
+	float y;
+	a=0;
 	printf("\nEl enemigo ha decidido atacarte.\n");
 	
 	n = rand() % 100 + 1;
-	if(n < evasionj){
-		a1 = rand() % 5 + ataqueb;
-		a2 = rand() % 5 + ataqueb;
-		a = a1 + a2;
-		i=1;
-		printf("\nEl enemigo tiene %i puntos de ataque, hace %i de danho.\n", ataqueb, a);
+	if(n >= evasionj){
+		a = rand() % 10 + ataqueb;
+		printf("El enemigo tiene %i puntos de ataque, hace %i de danho.\n", ataqueb, a);
+		
+		a = a*(1-(defensaj/100.0));
+		printf("Tienes %i puntos de defensa, su ataque hace que %i de danho traspasen tu armadura.\n", defensaj, a);
 	}
 	
-	if(i==1){
-		x = a*(defensaj/100);
-		a = a - x;
-		printf("\nTienes %i puntos de defensa, mitigas %i de danho.\n", defensaj, x);
-		printf("\nSu ataque hace que %i de danho traspasen tu armadura.\n", defensaj, x);
-	}
 
-	if(i==0)
-	printf("\nHas esquivado el ataque del enemigo, no recibes danho.\n");
+	else
+	printf("Has esquivado el ataque del enemigo, no recibes danho.\n");
 	
 
 	return hpj = hpj - a;
 }
 //FUNCION DE CURACIÓN DEL ENEMIGO
 int curacionenemigo(int hpb, int curacionb){
-	int c1, c2, c;
+	int c;
 
 	printf("\nEl enemigo ha decidido curarse.\n");
-	c1 = rand() % 5 + curacionb;
-	c2 = rand() % 5 + curacionb;
-	c = c1 + c2;
+	c = rand() % 5 + curacionb;
 
-	printf("\nEl enemigo tiene %i de curacion, su salud aumenta en %i puntos.\n", curacionb, c);
+	printf("El enemigo tiene %i de curacion, su salud aumenta en %i puntos.\n", curacionb, c);
 
 	return hpb = hpb + c;
 }
@@ -403,7 +408,7 @@ int aumentoataqueb(int ataqueb){
 	printf("\nEl enemigo ha decidido aumentar su poder.\n");
 	aa = rand() % 4 + 2;
 
-	printf("\nEl enemigo ha obtenido %i de poder.\n", aa);
+	printf("El enemigo ha obtenido %i de poder.\n", aa);
 
 	return ataqueb += aa;
 }
@@ -415,7 +420,7 @@ int aumentocuracionb(int curacionb){
 	printf("\nEl enemigo ha decidido aumentar su curacion.\n");
 	ac = rand() % 4 + 2;
 
-	printf("\nEl enemigo ha obtenido %i de curacion.\n", ac);
+	printf("El enemigo ha obtenido %i de curacion.\n", ac);
 
 	return curacionb += ac;
 }
@@ -427,7 +432,7 @@ int reduccionataqueb(int ataquej){
 	printf("\nEl enemigo ha decidido reducir tu ataque.\n");
 	ra = rand() % 4 + 2;
 
-	printf("\nSe ha reducido %i de tu poder.\n", ra);
+	printf("Se ha reducido %i de tu poder.\n", ra);
 
 	return ataquej -= ra;
 }
@@ -439,7 +444,7 @@ int reduccioncuracionb(int curacionj){
 	printf("\nEl enemigo ha decidido reducir tu curacion.\n");
 	rc = rand() % 4 + 2;
 
-	printf("\nSe ha reducido %i de la curacion del enemigo.\n", rc);
+	printf("Se ha reducido %i de la curacion del enemigo.\n", rc);
 
 	return curacionj -= rc;
 }
