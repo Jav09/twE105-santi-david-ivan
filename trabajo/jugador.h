@@ -1,1 +1,2 @@
-int jugador( int ataque(int hpb, int ataquej),int curacion(int hpj, int curacionj),int aumentoataque(int ataquej),int aumentocuracion(int curacionj),int aumentoevasion(int evasionj),int aumentodefensa(int defensaj));
+//FUNCINES JUGADOR
+int ataque(int hpb, int ataquej), curacion(int hpj, int curacionj), aumentoataque(int ataquej), aumentocuracion(int curacionj), aumentoevasion(int evasionj), aumentodefensa(int defensaj);
