@@ -4,13 +4,13 @@
 //#include<time.h>
 int partida(int hpj, int ataquej, int curacionj, int defensaj, int evasionj, int hpb, int ataqueb, int curacionb, int dif)
 {
-int accion, mod;
+int accion, mod, ayuda;
 
-    srand(time(NULL));
+ srand(time(NULL));
 	
 	system("cls");
 	
-switch(dif){
+	switch(dif){
 		case 1:
 			printf("Estas jugando en la dificultad facil 'No me hagas danho'.\n");
 			break;
@@ -61,6 +61,7 @@ switch(dif){
     		    printf("No me hagas mas danho porfavor!\n");
     		    hpj = 0;
     		    break;
+    		
 			default:
 				printf("Pierdes el turno, elige bien la proxima vez.\n");
 				break;
@@ -74,7 +75,6 @@ switch(dif){
 		        	ataquej = 60;
 		        	printf("El ataque maximo es 60.\n");
 		    	}
-		        ataquej = 60;
 				printf("\nTienes %i puntos de ataque, haras mas danho con tus proximos golpes.\n", ataquej);
 		        break;
 
@@ -108,6 +108,7 @@ switch(dif){
 
 
 	//TURNO DEL ENEMIGO
+		accion=0;
 		printf("\n\nTURNO DEL ENEMIGO:\n");
 		accion = rand() % 3 + 1;
 		system("pause");
@@ -125,20 +126,42 @@ switch(dif){
 			    break;
 
 			case 3://MODIFICADORES
-				if(ataquej > 0 && curacionj > 0)
-				accion = rand() % 4 + 4;
-				if(ataquej==0||curacionj==0)
+				if(ataqueb <= 0)
+				accion = 4;
+				if(curacionb <= 0)
+				accion = 5;
+				if(ataquej <= 0)
 				accion = rand() % 2 + 4;
+				if(curacionj <= 0)
+				accion = rand() % 2 + 4;
+				if(ataqueb==60)
+				accion = rand() % 3 + 5;
+				if(curacionb==60){
+					ayuda = rand() % 2 + 1;
+					switch(ayuda){
+						case 1:
+						accion = 4;
+						break;
+						case 2:
+						accion = rand() % 3 + 5;
+						break;
+					}
+				}
+				else
+				accion = rand() % 4 + 4;
 				
-				if(curacionj==0)
 
 			case 4://AUMENTO ATAQUE
 				ataqueb = aumentoataqueb(ataqueb);
+				if(ataquej > 60)
+		    	ataquej = 60;
 			    printf("\nEl enemigo tiene %i puntos de ataque, hara mas danho con sus proximos golpes.\n", ataqueb);
 				break;
 
 			case 5://AUMENTO CURACIÓN
 				curacionb = aumentocuracionb(curacionb);
+				if(curacionj > 60)
+		    	curacionj = 60;
 			    printf("\nEl enemigo tiene %i puntos de curacion, recuperara mas vida la proxima vez que se cure.\n", curacionb);
 				break;
 
@@ -149,7 +172,7 @@ switch(dif){
 			    printf("\nTienes %i puntos de ataque, haras menos danho con tus proximos golpes.\n", ataquej);
 				break;
 
-			case 7://REDUCCIÓN CURACIÓN DEL ENEMIGO
+			case 7://REDUCCIÓN CURACIÓN DEL JUGADOR
 				curacionj = reduccioncuracionb(curacionj);
 				if(curacionj < 0)
 		    	curacionj = 0;
@@ -161,16 +184,6 @@ switch(dif){
 		system("cls");
 
 	}while(hpj > 0 && hpb > 0);
-if (hpj<0)
-{
-	system ("color 4A" );
-	printf("Has perdido");
-}
-if (hpb<0)
-{
-	system ("color 1A" );
-	printf("Has ganado");
-}	
+
 return 0;
 }
-

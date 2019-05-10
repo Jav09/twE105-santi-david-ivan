@@ -7,7 +7,7 @@ void dificultad(int *hb, int *ab, int *cb, int *df){
 	switch(elige){
 		case 1:
 			printf("Buena eleccion, si tienes menos de 10 anhos.\n");
-			*hb = 500;
+			*hb = 100;
 			*ab = 20;
 			*cb = 20;
 			*df = 1;
@@ -15,14 +15,14 @@ void dificultad(int *hb, int *ab, int *cb, int *df){
 
 		case 2:
 			printf("Espero tu victoria valiente.\n");
-			*hb = 1000;
+			*hb = 500;
 			*ab = 30;
 			*cb = 30;
 			break;
 
 		case 3:
 			printf("Ataca Guerro!!!\n");
-			*hb = 2000;
+			*hb = 1000;
 			*ab = 40;
 			*cb = 40;
 			*df = 3;
@@ -34,5 +34,3 @@ void dificultad(int *hb, int *ab, int *cb, int *df){
 	system("pause");
 	system("cls");
 }
-
-

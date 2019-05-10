@@ -1,4 +1,5 @@
 #include<stdio.h>
+
 //FUNCION DE ATAQUE DEL ENEMIGO
 int ataqueenemigo(int hpj, int ataqueb, int evasionj, int defensaj){
 	int a, n;
@@ -34,7 +35,7 @@ int curacionenemigo(int hpb, int curacionb){
 	return hpb = hpb + c;
 }
 
-//FUNCION DE AUMENTO DE ATAQUE DEL ENEMIGO
+//FUNCION DE AUMENTO DE PODER DEL ENEMIGO
 int aumentoataqueb(int ataqueb){
 
 	int aa;

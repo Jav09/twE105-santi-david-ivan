@@ -2,11 +2,9 @@
 //FUNCION DE ATAQUE DEL JUGADOR
 int ataque(int hpb, int ataquej){
 
-	int a1, a2, a;
+	int a;
 
-	a1 = rand() % 5 + ataquej;
-	a2 = rand() % 5 + ataquej;
-	a = a1 + a2;
+	a = rand() % 5 + ataquej;
 
 	printf("\nTienes %i de poder, tu ataque hace %i de danho al enemigo.\n\n", ataquej, a);
 
@@ -15,11 +13,9 @@ int ataque(int hpb, int ataquej){
 //FUNCION DE CURACION DEL JUGADOR
 int curacion(int hpj, int curacionj){
 
-	int c1, c2, c;
+	int c;
 
-	c1 = rand() % 5 + curacionj;
-	c2 = rand() % 5 + curacionj;
-	c = c1 + c2;
+	c = rand() % 5 + curacionj;
 
 	printf("\nTienes %i de curacion, tu salud aumenta en %i puntos.\n\n", curacionj, c);
 
@@ -69,3 +65,4 @@ int aumentodefensa(int defensaj){
 
 	return defensaj += ad;
 }
+
