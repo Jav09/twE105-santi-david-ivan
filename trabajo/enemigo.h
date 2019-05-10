@@ -1,0 +1,1 @@
+int enemigo(int ataqueenemigo(int hpj, int ataqueb, int evasionj, int defensaj),int curacionenemigo(int hpb, int curacionb),int aumentoataqueb(int ataqueb),int aumentocuracionb(int curacionb),int reduccionataqueb(int ataquej),int reduccioncuracionb(int curacionj));
