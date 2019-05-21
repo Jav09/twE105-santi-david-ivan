@@ -3,7 +3,7 @@
 #include"jugador.h"
 #include"enemigo.h"
 
-//Función del juego, se compone de dos grandes partes, el turno del jugador y más abajo el turno del enemigo.
+//FunciÃ³n del juego, se compone de dos grandes partes, el turno del jugador y mÃ¡s abajo el turno del enemigo.
 
 int partida(int hpj, int ataquej, int curacionj, int defensaj, int evasionj, int hpb, int ataqueb, int curacionb, int dif)
 {
@@ -13,7 +13,7 @@ int partida(int hpj, int ataquej, int curacionj, int defensaj, int evasionj, int
 	
 	system("cls");
 	
-	//Te informa de la dificultad en la que jugarás.
+	//Te informa de la dificultad en la que jugarÃ¡s.
 	
 	switch(dif){
 		case 1:
@@ -29,16 +29,16 @@ int partida(int hpj, int ataquej, int curacionj, int defensaj, int evasionj, int
 	system("pause");
 	system("cls");
 	
-	//Menú de elección de posibilidades del jugador.
+	//MenÃº de elecciÃ³n de posibilidades del jugador.
 	
 	do{
-    	do{ //Este do while permite que la opcion de mostrar las estadísticas no consuma un turno.
+    	do{ //Este do while permite que la opcion de mostrar las estadÃ­sticas no consuma un turno.
     		printf("SALUD JUGADOR: %i                 SALUD ENEMIGO: %i\n\n", hpj, hpb);
     		printf("TURNO DEL JUGADOR:\n");
 			printf("(1)Ataque\n(2)Curacion\n(3)Modificadores\n(4)Estadisticas\n(5)Rendirse\n");
     		scanf("%i", &accion);
 
-    		if(accion == 4){//INFORMACIÓN
+    		if(accion == 4){//INFORMACIÃ“N
     		    printf("TU:\nSALUD: %i\nATAQUE: %i\nCURACION: %i\nEVASION: %i\nDEFENSA: %i\n\nENEMIGO:\nSALUD: %i\nATAQUE: %i\nCURACION: %i\n\n", hpj, ataquej, curacionj, evasionj, defensaj, hpb, ataqueb, curacionb);
     		    system("pause");
     		    system("cls");
@@ -47,7 +47,7 @@ int partida(int hpj, int ataquej, int curacionj, int defensaj, int evasionj, int
 
 		}while(accion == 4);
 		
-		//Elección del jugador acompañado de funciones para cada caso que ejecutarán la acción correspondiente. (jugador.c)
+		//ElecciÃ³n del jugador acompaÃ±ado de funciones para cada caso que ejecutarÃ¡n la acciÃ³n correspondiente. (jugador.c)
 		
     	mod = 0;
     	switch(accion){
@@ -57,7 +57,7 @@ int partida(int hpj, int ataquej, int curacionj, int defensaj, int evasionj, int
 			    printf("El enemigo tiene %i puntos de salud.\n", hpb);
 			    break;
 
-			case 2://CURACIÓN
+			case 2://CURACIÃ“N
 				hpj = curacion(hpj, curacionj);
 			    printf("Tienes %i puntos de salud.\n", hpj);
 			    break;
@@ -90,7 +90,7 @@ int partida(int hpj, int ataquej, int curacionj, int defensaj, int evasionj, int
 				printf("\nTienes %i puntos de ataque, haras mas danho con tus proximos golpes.\n", ataquej);
 		        break;
 
-		    case 2://AUMENTO DE CURACIÓN DEL JUGADOR
+		    case 2://AUMENTO DE CURACIÃ“N DEL JUGADOR
 		    	curacionj = aumentocuracion(curacionj);
 		    	if(curacionj > 60){
 		        	curacionj = 60;
@@ -140,13 +140,13 @@ int partida(int hpj, int ataquej, int curacionj, int defensaj, int evasionj, int
 				    printf("\nTienes %i puntos de salud.\n", hpj);
 				    break;
 	
-				case 2://CURACIÓN
+				case 2://CURACIÃ“N
 					hpb = curacionenemigo(hpb, curacionb);
 				    printf("\nEl Enemigo tiene %i puntos de salud.\n", hpb);
 				    break;
 	
-				//Este caos de sentencias condicionales son una pequeña inteligencia artifical del juagdor que hace que tome decisiones concretas cuando se dan 
-				//situaciones características
+				//Este caos de sentencias condicionales son una pequeÃ±a inteligencia artifical del juagdor que hace que tome decisiones concretas cuando se dan 
+				//situaciones caracterÃ­sticas
 	
 				case 3://MODIFICADORES
 					if(ataqueb <= 0)
@@ -181,21 +181,21 @@ int partida(int hpj, int ataquej, int curacionj, int defensaj, int evasionj, int
 				    printf("\nEl enemigo tiene %i puntos de ataque, hara mas danho con sus proximos golpes.\n", ataqueb);
 					break;
 	
-				case 5://AUMENTO CURACIÓN
+				case 5://AUMENTO CURACIÃ“N
 					curacionb = aumentocuracionb(curacionb);
 					if(curacionj > 60)
 			    	curacionj = 60;
 				    printf("\nEl enemigo tiene %i puntos de curacion, recuperara mas vida la proxima vez que se cure.\n", curacionb);
 					break;
 	
-				case 6://REDUCCIÓN ATAQUE DEL JUGADOR
+				case 6://REDUCCIÃ“N ATAQUE DEL JUGADOR
 					ataquej = reduccionataqueb(ataquej);
 					if(ataquej < 0)
 			    	ataquej = 0;
 				    printf("\nTienes %i puntos de ataque, haras menos danho con tus proximos golpes.\n", ataquej);
 					break;
 	
-				case 7://REDUCCIÓN CURACIÓN DEL JUGADOR
+				case 7://REDUCCIÃ“N CURACIÃ“N DEL JUGADOR
 					curacionj = reduccioncuracionb(curacionj);
 					if(curacionj < 0)
 			    	curacionj = 0;
@@ -211,7 +211,7 @@ int partida(int hpj, int ataquej, int curacionj, int defensaj, int evasionj, int
 		
 	}while(hpj > 0 && hpb > 0);
 	
-	//Switch case para la narrativa final depemdiendo del resultado de la batalla.
+	//Switch case para la narrativa final dependiendo del resultado de la batalla.
 	
 	switch(aux){
 		
