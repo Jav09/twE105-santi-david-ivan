@@ -1,0 +1,13 @@
+Hola! Bienvenido a nuestro programa!
+
+Esta formado por un juego de combate por turnos en el que tu
+objetivo sera derrotar a un monstruo, ve cuidado guerrero, es muy poderoso!
+
+En primer lugar se mostrara el menu del juego con las opciones mas basicas, preparate para empezar
+la partida y cuando estes listo... A por todas! No olvides elegir la dificultad.
+
+En relacion a la jugabilidad es muy intuitiva, pero no te confies, eso no quiere decir que sea sencillo.
+Contaras con diversas opciones en cada turno y mas vale que uses la cabeza para idear una estrategia
+o seras una simple victima mas del terrible enemigo.
+
+Esto es todo... por ahora... En guardia!!!!
